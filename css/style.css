@@ -1,0 +1,148 @@
+body{
+	background-color: white;
+	margin: 0;
+	padding: 0;
+}
+
+a{
+	text-decoration: none;
+	color: #056839;
+}
+
+.nav ul {
+	margin: 0px;
+	padding: 0px;
+	background: #8dc63f;
+	list-style:none;
+}
+
+.menu li{
+	height: 100%;
+	align-items: center;
+}
+
+ul a:hover {
+	background-color: #056839;
+	color:  #8dc63f;
+}
+
+.nav a {
+	padding: 1em;
+	display: block;
+	text-align:center;
+	text-decoration: none;
+}
+
+.nav .menu {
+	display: flex; /*1*/
+	flex-direction : row; /*2*/
+	justify-content: flex-start; /*3*/
+	align-items: center;
+	height: 100%;
+}
+
+header h1 {
+	display: none;
+}
+
+footer{
+	height: auto;
+	width: 100%;
+	background-color: #8dc63f;
+}
+
+/************Button to top************/
+.button_top {
+border: none;
+background-color: #ebedef !important;
+font-weight: 100;
+padding: 10px;
+text-transform: uppercase;
+border-radius: 6px;
+display: inline-block;
+transition: all 0.3s ease 0s;
+position: fixed;
+bottom: 100px;
+left:90%;
+}
+
+.button_top:hover {
+color: #404040 !important;
+font-weight: 700 !important;
+letter-spacing: 3px;
+background: none;
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+transition: all 0.3s ease 0s;
+}
+
+/************Logo************/
+#logo_header{
+	width: 100%;
+}
+
+/************Grid************/
+
+header {
+    grid-area: header;
+    }
+
+#menu_nav {
+    grid-area: menu_nav;
+    }
+
+#contentMain{
+	grid-area: content_main;
+}
+
+footer{
+	grid-area:footer; 
+}
+
+body{
+	display: grid;
+    grid-template-columns: 200px auto;
+    grid-template-areas:
+     "header menu_nav"
+     "content_main content_main"
+     "footer footer";
+}
+
+
+
+
+
+
+
+/************Responsive 480px************/
+@media (max-width: 480px) {
+
+  .nav .menu{
+    display: flex; /*1*/
+	flex-direction : column; /*2*/
+	justify-content: center; /*3*/
+  }
+
+  body{
+	display: grid;
+    grid-template-columns: auto;
+    grid-template-areas:
+     "header"
+     "menu_nav"
+     "content_main"
+     "footer";
+ }
+}
+
+@media(min-width: 1024px) {
+
+  body{
+	display: grid;
+    grid-template-columns: 200px 2fr 1fr;
+    grid-template-areas:
+     "header menu_nav menu_nav"
+     "... content_main ..."
+     "footer footer footer";
+ }
+}
+

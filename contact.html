@@ -10,6 +10,7 @@
 	<link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 	<link rel="stylesheet" href="css/all.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script >
 		var _gaq = _gaq || [];
 		_gaq.push(['_setAccount', 'UA-XXXXXXXX-Y']);
@@ -44,18 +45,24 @@
 	</nav>
 
 	<main id="contentMain">
-			<form action="/ma-page-de-traitement" method="post">
+			<form form id="app" @submit="checkForm" action="index.html">
+				<p v-if="errors.length">
+					<b>Merci de remplir ces champs:</b>
+					<ul>
+						<li v-for="error in errors">{{ error }}</li>
+					</ul>
+				</p>
 				<div>
 					<label for="name">Nom :</label>
-					<input type="text" id="name" name="user_name">
+					<input type="text" id="name" name="user_name" v-model="name">
 				</div>
 				<div>
-					<label for="name">Prénom :</label>
-					<input type="text" id="surname" name="user_surname">
+					<label for="surname">Prénom :</label>
+					<input type="text" id="surname" name="user_surname" v-model="surname">
 				</div>
 				<div>
 					<label for="service-select">Service:</label>
-					<select name="service" id="service-select">
+					<select name="service" v-model="service" id="service-select">
 						<option value="">--Please choose an service--</option>
 						<option value="rh">RH</option>
 						<option value="comptabilite">Comptabilité</option>
@@ -80,16 +87,52 @@
 						<option value="logistique">Logistique</option>
 						<option value="bureauetudes">Bureau d'études</option>
 					</select>
+
 				</div>
 				<div>
-					<label for="msg">Message :</label>
-					<textarea id="msg" name="user_message"></textarea>
+					<label for="user_message">Message :</label>
+					<textarea id="user_message" name="user_message" v-model="user_message"></textarea>
 				</div>
+				<button type="submit" value="Submit">Envoyer</button>
 			</form>
-			<button onclick="envoyer()">Envoyer</button>
+			
 	</main>
 	<footer>
 		<div id="lienSociaux"></div>
 	</footer>
+
+	<script>
+		const app = new Vue({
+		  el: '#app',
+		  data: {
+		    errors: [],
+		    name: null,
+		    surname: null,
+		    service: null,
+		    user_message: null
+
+		  },
+		  methods:{
+		    checkForm: function (e) {
+		    	this.thanks = null;
+		      if (this.name && this.surname && this.user_message) {
+		        return true;
+		      }
+
+		      this.errors = [];
+
+		      if (!this.name) {
+		        this.errors.push('Nom requis.');
+		      }
+		      if (!this.surname) {
+		        this.errors.push('Prénom requis.');
+		      }
+		      if (!this.user_message) {
+		        this.errors.push('Message requis.');
+		      }
+		      e.preventDefault();
+		    }
+		  }
+	})</script>
 </body>
 </html>

@@ -8,6 +8,7 @@
 	<meta name="description" content="description here">
 	<meta name="keywords" content="keywords,here">
 	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<link rel="stylesheet" href="css/styleProduit.css" type="text/css">
 	<link rel="stylesheet" href="css/all.min.css">
 	<meta name="robots" content="noindex,nofollow">
 	<link rel="icon" type="image/png" href="./img/pictoLogos.ico" />
@@ -44,7 +45,25 @@
 			<li><a href="./contact.html">Contact</a></li>
 		</ul>
 	</nav>
-	<section id="contentMain"></section>
+	<section id="contentMain">
+		<form id="main" v-cloak>
+
+		    <div class="bar">
+		        <!-- Create a binding between the searchString model and the text field -->
+
+		        <input type="text" v-model="searchString" placeholder="Enter your search terms" />
+		    </div>
+
+		    <ul class="ulProd">
+		        <!-- Render a li element for every entry in the computed filteredArticles array. -->             
+		        <li v-for="article in filteredArticles">
+		            <a v-bind:href="article.url" class="aProd"><img v-bind:src="article.image" /></a>
+		            <p>{{article.title}}</p>
+		        </li>
+		    </ul>
+
+		</form>
+	</section>
 	<footer>
 		<ul id="lienSociaux">
 			<li><a href="#"><i class="fab fa-facebook"></i></a></li>
@@ -62,6 +81,72 @@
 		<a id="goTop" class="button_top" href="#top"><i class="fas fa-caret-square-up"></i></a>
 	</footer>
 
-	
+	<script>
+
+var demo = new Vue({
+    el: '#main',
+    data: {
+        searchString: "",
+
+        // The data model. These items would normally be requested via AJAX,
+        // but are hardcoded here for simplicity.
+
+        articles: [
+            {
+                "title": "Tertiare",
+                "url": "http://madera-construction.fr/tertiaire",
+                "image": "http://madera-construction.fr/images/rubriques/BUREAUX.jpg"
+            },
+            {
+                "title": "Creches-Scolaire",
+                "url": "http://madera-construction.fr/creches-scolaire",
+                "image": "http://madera-construction.fr/images/rubriques/CRECHES.jpg"
+            },
+            {
+                "title": "Associations",
+                "url": "http://madera-construction.fr/associations",
+                "image": "http://madera-construction.fr/images/rubriques/CLUB_HOUSE.jpg"
+            },
+            {
+                "title": "Bailleurs sociaux",
+                "url": "http://madera-construction.fr/bailleurs-sociaux",
+                "image": "http://madera-construction.fr/images/Newsletters/extension-ecole-pennes-mirabeau3.jpg"
+            },
+            {
+                "title": "Location",
+                "url": "http://madera-construction.fr/bailleurs-sociaux",
+                "image": "http://madera-construction.fr/images/rubriques/BUREAUX.jpg"
+            },
+            {
+                "title": "Secteur agricole",
+                "url": "http://madera-construction.fr/secteur-agricole",
+                "image": "http://madera-construction.fr/images/rubriques/SECTEUR-AGRICOLE.jpg"
+            }
+        ]
+    },
+    computed: {
+        // A computed property that holds only those articles that match the searchString.
+        filteredArticles: function () {
+            var articles_array = this.articles,
+                searchString = this.searchString;
+
+            if(!searchString){
+                return articles_array;
+            }
+
+            searchString = searchString.trim().toLowerCase();
+
+            articles_array = articles_array.filter(function(item){
+                if(item.title.toLowerCase().indexOf(searchString) !== -1){
+                    return item;
+                }
+            })
+
+            // Return an array with the filtered data.
+            return articles_array;;
+        }
+    }
+});
+</script>
 </body>
 </html>

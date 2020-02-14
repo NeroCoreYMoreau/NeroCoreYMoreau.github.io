@@ -120,7 +120,7 @@ header{
 }
 
 div #organigramme{
-  width:90vw ;
+  width:100%;
 }
 
 .parallax{
@@ -261,7 +261,10 @@ footer,nav, section{
 body{
   font-size: 2rem;
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  /*probleme lié au areas vide avec des contenus size en vw */
+  /*grid-template-columns: 1fr 2fr 1fr;*/
+  grid-template-columns: 25% 50% 25%;
+
   grid-template-areas:
    "header menu_nav menu_nav"
    "... content_main ..."

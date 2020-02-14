@@ -56,7 +56,6 @@ header h1 {
 
 article{
   padding:1em;
-  border: 1em solid #056839;
 }
 
 aside{
@@ -64,8 +63,8 @@ aside{
 }
 
 #app{
-  width: 100%;
-  padding: 3em;
+text-align: center;
+height: 100vh;
 }
 
 /************Burger menu************/
@@ -75,6 +74,9 @@ aside{
 
 .icon_burger{
    font-size: 2rem;
+   float: right;
+   margin-right: 1em;
+   margin-top: 0.5em;
 }
 
 /************Button to top************/
@@ -90,6 +92,7 @@ transition: all 0.3s ease 0s;
 position: fixed;
 bottom: 5rem;
 left:85%;
+opacity: 0.4;
 }
 
 .button_top:hover {
@@ -154,6 +157,10 @@ header {
     grid-area: header;
     }
 
+nav, section{
+  font-size: 0.8rem;
+}
+
 #menu_nav {
     grid-area: menu_nav;
     }
@@ -181,6 +188,7 @@ body{
 footer{
 	height: auto;
 	background-color: #8dc63f;
+  font-size: 1rem;
 }
 
 footer ul{
@@ -213,11 +221,15 @@ footer ul{
   display: grid;
 }
 
+footer,nav, section{
+  font-size: 1.5rem;
+}
+
  	body{
     font-size: 1.5rem;
 		display: grid;
-	    grid-template-columns: 1fr 3fr;
-	    grid-template-areas:
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas:
 	     "header menu_nav"
 	     "content_main content_main"
 	     "footer footer";
@@ -225,7 +237,7 @@ footer ul{
 
   header{
   text-align: left;
-}
+  }
 }
 
 @media(min-width: 102rem) {
@@ -236,12 +248,17 @@ footer ul{
     align-items: center;
     height: 100%;
   }
+
 .icon_burger{
   display:none;
-  }
+}
+
+footer,nav, section{
+  font-size: 1.5rem;
+}
 
 
-  body{
+body{
   font-size: 2rem;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;

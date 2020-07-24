@@ -1,274 +1,349 @@
-body{
-	background-color: white;
+/************Reset CSS************/
+*{
 	margin: 0;
 	padding: 0;
-	font-size: 62%;
+	font-family: 'Josefin Sans', sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
+
+/************Grid************/
+
+
+.logo-container{
+    grid-area: logo-container;
 }
 
-a{
-	text-decoration: none;
-	color: #056839;
+.logo-container img{
+    width: 100vw;
 }
 
-div img{
-  width: auto;
-  height: 100%;
+.search-container{
+    grid-area: search-container;
+}
+.basket-container{
+    grid-area: basket-container;
+}
+.user-container{
+    grid-area: user-container;
 }
 
-.nav ul {
-	margin: 0rem;
-	padding: 0rem;
-	background: #8dc63f;
-	list-style:none;
+nav{
+    grid-area: nav;
 }
 
-.menu li{
-	height: 100%;
-	align-items: center;
+header {
+    grid-area: header;
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr 1fr ;
+    grid-template-areas:
+    "logo-container logo-container logo-container logo-container"
+    "nav search-container user-container basket-container ";
+    }
+
+.promo-container{
+    grid-area: promo-container
 }
 
-ul a:hover {
-	background-color: #056839;
-	color:  #8dc63f;
+.top-sold{
+    grid-area: top-sold;
 }
 
-.nav a {
-	padding: 1em;
-	display: block;
-	text-align:center;
-  vertical-align: center;
-	text-decoration: none;
+.expert-note{
+    grid-area: expert-note;
 }
 
-.nav .menu{
-display: flex; /*1*/
-flex-direction : column; /*2*/
-justify-content: center; /*3*/
+.heart-stroke{
+    grid-area: heart-stroke;
 }
 
-header h1 {
-	display: none;
+.focus{
+    grid-area: focus;
 }
 
-article{
-  padding:1em;
-}
-
-aside{
-  padding-left: 1em;
-}
-
-#app{
-text-align: center;
-height: 100vh;
-}
-
-/************Burger menu************/
-#menu_nav{
-  display: none;
-}
-
-.icon_burger{
-   font-size: 2rem;
-   float: right;
-   margin-right: 1em;
-   margin-top: 0.5em;
-}
-
-/************Button to top************/
-.button_top {
-border: none;
-background-color: #ebedef !important;
-font-weight: 100;
-padding: 1rem;
-text-transform: uppercase;
-border-radius: 0.6rem;
-display: inline-block;
-transition: all 0.3s ease 0s;
-position: fixed;
-bottom: 5rem;
-left:85%;
-opacity: 0.4;
-}
-
-.button_top:hover {
-color: #404040 !important;
-font-weight: 700 !important;
-letter-spacing: 0.3rem;
-background: none;
--webkit-box-shadow: 0rem 0.5rem 4rem -1rem rgba(0,0,0,0.57);
--moz-box-shadow: 0rem 0.5rem 4rem -1rem rgba(0,0,0,0.57);
-transition: all 0.3s ease 0s;
-}
-
-/************Image************/
-#organigramme{
-  border: 0.1em solid black;
-}
-
-header{
-  text-align: center;
-}
-
-#logo_header{
-  width: auto;
-  height: 100%;
-}
-
-div #organigramme{
-  width:100%;
-}
-
-.parallax{
-  width:100%;
-  height:100vh;
-}
-
-#mm1{
- background: url("../img/mm1.jpg")center 0 no-repeat fixed;
-}
-#mm2{
- background: url("../img/mm2.jpg")center 0 no-repeat fixed;
-}
-#mm3{
- background: url("../img/mm3.jpg")center 0 no-repeat fixed;
-}
-#mm4{
- background: url("../img/mm4.jpg")center 0 no-repeat fixed;
-}
-#mm5{
- background: url("../img/mm5.jpg")center 0 no-repeat fixed;
-}
-#mm6{
- background: url("../img/mm6.jpg")center 0 no-repeat fixed;
+.promotion{
+    grid-area: promotion;
 }
 
 #contentMain{
-  background:url("../img/mm7.png");
-}
-/************Grid************/
-
-header {
-    height: 10vh; 
-    grid-area: header;
+    grid-area: content_main;
+    display: grid;
+    grid-template-columns:1fr;
+    grid-template-areas:
+    "promo-container"
+    "top-sold"
+    "expert-note"
+    "heart-stroke"
+    "focus"
+    "promotion";
     }
+}
+
+
+.blog_extract{
+    grid-area: blog-extract;
+}
+
+#blog_container{
+    grid-area: blog_container;
+}
+
 
 nav, section{
   font-size: 0.8rem;
 }
 
-#menu_nav {
-    grid-area: menu_nav;
-    }
+#menu-footer{
+    grid-area: menu-footer;
+    display: flex;
 
-#contentMain{
-	grid-area: content_main;
+}
+
+#brand{
+    grid-area: brand;
+    display: flex;
+}
+
+#copyright{
+    grid-area: copyright;
+    width: 100vw;
+    text-align: center;
+    font-size: 0.6em;
 }
 
 footer{
-	grid-area:footer; 
+    grid-area:footer;
+    display: grid;
+    grid-template-columns:1fr ;
+    grid-template-areas:
+    "menu-footer"
+    "brand"
+    "copyright";
 }
-	
-body{
-	display: grid;
-  grid-template-columns:1fr;
-  grid-template-areas:
+
+/*#bodybis{
+    display: grid;
+    grid-template-columns:1fr ;
+    grid-template-areas:
     "header"
-    "menu_nav"
     "content_main"
+    "blog_container"
     "footer";
 }
+*//************HEADER************/
 
-/************Footer************/
-
-footer{
-	height: auto;
-	background-color: #8dc63f;
-  font-size: 1rem;
+/************menu************/
+.menu {
+    flex-basis: 100%;
+    list-style: none;
+    margin: 0;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: margin .5s ease-in-out, max-height .5s ease-in-out, opacity .3s .1s ease-in-out,
+    visibility: hidden;
 }
 
-footer ul{
-  display: inline-block;
+
+.menu-checkbox:checked ~ .menu {
+    margin: 1em 0;
+    max-height: 1000px;
+    opacity: 1;
+    visibility: visible;
 }
 
-#contactFooter li,#lienSociaux li{
-  list-style :none;
+.menu-checkbox {
+	opacity: 0;
+	position: absolute;
+	top: -1000px;
 }
 
-#lienSociaux a {
-  font-size: 3rem;
-  border-radius: 0.1em;
-  vertical-align: center;
-}
-/************Responsive 480px************/
-@media (min-width: 48rem) {
-	.nav .menu {
-		display: flex; /*1*/
-		flex-direction : row; /*2*/
-		justify-content: flex-start; /*3*/
-		align-items: center;
-		height: 100%;
-	}
-	.icon_burger{
-  display:none;
-  }
-
-  #menu_nav{
-  display: grid;
+.menu-checkbox:focus + .menu-toggle {
+    outline: #00A1A1 auto 5px;
 }
 
-footer,nav, section{
-  font-size: 1.5rem;
+.menu-toggle {
+    padding: 0.5em 1em;
 }
 
- 	body{
-    font-size: 1.5rem;
-		display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-template-areas:
-	     "header menu_nav"
-	     "content_main content_main"
-	     "footer footer";
-	}
-
-  header{
-  text-align: left;
-  }
+.menu li {
+    border-bottom: 1px solid #eee;
 }
 
-@media(min-width: 102rem) {
-.nav .menu {
-    display: flex; /*1*/
-    flex-direction : row; /*2*/
-    justify-content: flex-start; /*3*/
+.menu li a {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+}
+
+.nav-wrapper {
     align-items: center;
-    height: 100%;
-  }
-
-.icon_burger{
-  display:none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-footer,nav, section{
-  font-size: 1.5rem;
+.menu ul,#menu-footer ul li{
+    position: absolute;
+/* on cache les sous menus complètement sur la gauche */
+    left: -999em;
+    text-align: left;
+    z-index: 1000;
 }
 
+.menu li:hover ul, #menu-footer ul:hover li {
+/* Au survol des li du menu on replace les sous menus */
+    left: auto;
+    position: relative;
+}
 
-body{
-  font-size: 2rem;
+/************Search bar************/
+#search-large{
+    display: none;
+}
+
+#search-small {
+    display: flex;
+    position: absolute;
+    left: -999em;
+    z-index: 1000;
+}
+
+.search-hidde:hover #search-small {
+    left: auto;
+    position: relative;
+}
+
+/************Main************/
+.promo-container img{
+    width: 100vw;
+}
+
+/************sliderTopVente************/
+.slider {
+  width: 90vw;
+  margin: 1em auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.slider-viewport {
+  width: 90vw;
+  height: 25vh;
+  overflow: hidden;
+}
+
+.slider-content {
   display: grid;
-  /*probleme lié au areas vide avec des contenus size en vw */
-  /*grid-template-columns: 1fr 2fr 1fr;*/
-  grid-template-columns: 25% 50% 25%;
-
-  grid-template-areas:
-   "header menu_nav menu_nav"
-   "... content_main ..."
-   "footer footer footer";
- }
+  grid-auto-flow: column;
+  transition: 1s all;
+}
+.slider-content img {
+  width: 90vw;
+  height: 25vh;
 }
 
+.slider-nav {
+  position: relative;
+  width: 100%;
+  bottom: -3em;
+  margin: 1em auto;
+  text-align: center;
+}
+.slider-nav a {
+  box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.3);
+  border-radius: 0em 1em;
+  display: inline-block;
+  background-color: #adafbc;
+  width: 2.5em;
+  height: 2.5em;
+  margin: 0 3px;
+}
+.slider-nav a:hover {
+  background-color: red;
+  box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.8);
+}
+
+#img2:target .slider-content {
+  transform: translateX(-90vw);
+}
+
+#img3:target .slider-content {
+  transform: translateX(-180vw);
+}
+
+#img4:target .slider-content {
+  transform: translateX(-270vw);
+}
+
+#img5:target .slider-content {
+  transform: translateX(-360vw);
+}
+
+#img6:target .slider-content {
+  transform: translateX(-450vw);
+}
+
+#img7:target .slider-content {
+  transform: translateX(-540vw);
+}
+
+#img8:target .slider-content {
+  transform: translateX(-630vw);
+}
+
+
+/************MediaQueries************/
+
+/************DESKTOP************/
+/************HEADER************/
+/************menu************/
+
+@media screen and (min-width: 65em) {
+    .menu {
+        flex-basis: auto;
+        margin: 0;
+        max-height: 1000px;
+        opacity: 1;
+        padding: 0;
+        visibility: visible;
+    }
+
+    .menu-toggle,
+    .menu-checkbox {
+        display: none;
+    }
+    .menu li {
+        border: none;
+        display: inline-block;
+    }
+
+    .menu li a {
+        padding: .5em;
+    }
+
+    .menu {
+/* on centre le menu dans la page */
+    text-align: center;
+}
+    .menu li {
+/* on place les liens du menu horizontalement */
+    display: inline-block;
+}
+    .menu ul li {
+/* on enlève ce comportement pour les liens du sous menu */
+    display: inherit;
+}
+    .menu a {
+    text-decoration: none;
+    display: block;
+    color:#000;
+}
+
+    .menu li:hover ul {
+/* Au survol des li du menu on replace les sous menus */
+    left: auto;
+    position: absolute;
+}
+
+
+}
